@@ -1,6 +1,11 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 import 'package:yes_no_app/presentation/widgets/chat/her_message_bubble.dart';
 import 'package:yes_no_app/presentation/widgets/chat/my_message_bubble.dart';
+import 'package:yes_no_app/presentation/widgets/chat/shared/message_field_box.dart';
+
+
 
 
 class ChatScreen extends StatelessWidget {
@@ -8,15 +13,15 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(4.0),
+        leading: const Padding(
+          padding: EdgeInsets.all(4.0),
           child: const CircleAvatar(
             backgroundImage: NetworkImage('https://d3g9pb5nvr3u7.cloudfront.net/authors/5be1d83f2177895b3e20c1e1/-1018204645/256.jpg')
           ),
         ),
-        title: Text('My Love'),
+        title: const Text('My Love'),
       ),
       body: _ChatView(),
     );
@@ -44,7 +49,9 @@ class _ChatView extends StatelessWidget {
                   : const MyMessageBubble(); //MyMessagebubble Widget
               })
             ),
-            Text('Mundo'),
+
+            /// Caja de Texto de mensaje
+            const MessageFieldBox(),
           ],
         ),
       ),
