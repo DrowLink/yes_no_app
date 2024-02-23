@@ -1,6 +1,8 @@
 // To parse this JSON data, do
 //
 //     final yesNoModel = yesNoModelFromJson(jsonString);
+import 'package:yes_no_app/domain/entities/message.dart';
+
 class YesNoModel {
     final String answer;
     final bool forced;
@@ -12,7 +14,7 @@ class YesNoModel {
         required this.image,
     });
 
-    factory YesNoModel.fromJson(Map<String, dynamic> json) => YesNoModel(
+    factory YesNoModel.fromJsonMap(Map<String, dynamic> json) => YesNoModel(
         answer: json["answer"],
         forced: json["forced"],
         image: json["image"],
@@ -23,4 +25,10 @@ class YesNoModel {
         "forced": forced,
         "image": image,
     };
+
+    Message toMessageEntity() => Message(
+      text: answer == 'yes' ? 'Si' : 'No',
+      fromWho: FromWho.hers,
+      imageUrl: image,
+      );
 }
